@@ -1,12 +1,12 @@
-# Proyecto final
+# Proyecto final Estadística y Análisis de Datos
 
-## Resumen. -  
+## Resumen 
 Proyecto final de la materia de Estadística y Análisis de Datos utilizando el algoritmo Naive Bayes y el lenguaje de programación estadística R.
 
-## INTRODUCCION
+## Introducción
 En este proyecto se pretende averiguar la cobertura del sistema de recolección de basura con base a los resultados del Censo de 2015 en el estado de Baja California realizado por el Instituto Nacional de Estadística y Geografía (INEGI).
 
-## MARCO TEÓRICO
+## Marco Teórico
 ### R
 Sistema para computación estadística y gráficos. Consiste en un lenguaje más un entorno de tiempo de ejecución con gráficos, un depurador, acceso a ciertas funciones del sistema y la capacidad de ejecutar programas almacenados en archivos de script. El núcleo de R es un lenguaje informático interpretado que permite la ramificación y el bucle, así como la programación modular mediante funciones. La mayoría de las funciones visibles para el usuario en R están escritas en R. Es posible que el usuario interactúe con los procedimientos escritos en los lenguajes C, C ++ o FORTRAN para mayor eficiencia. La distribución R contiene funcionalidad para una gran cantidad de procedimientos estadísticos. Entre estos se encuentran: modelos lineales y lineales generalizados, modelos de regresión no lineal, análisis de series de tiempo, pruebas paramétricas y no paramétricas clásicas, agrupamiento y suavizado. También hay un gran conjunto de funciones que proporcionan un entorno gráfico flexible para crear varios tipos de presentaciones de datos. Los módulos adicionales ("paquetes de complementos") están disponibles para una variedad de propósitos específicos (consulte R Paquetes de complementos)
 
@@ -18,7 +18,8 @@ El análisis de datos consiste en la realización de las operaciones a las que e
 
 ### Algoritmo clasificador de Naive Bayes
 Los clasificadores ingenuos de Bayes son una colección de algoritmos de clasificación basados en el teorema de Bayes. No es un algoritmo único, sino una familia de algoritmos en los que todos ellos comparten un principio común, es decir, cada par de características que se clasifican es independiente entre sí . El teorema de Bayes se compone de la siguiente formula:
-P\left(\left.A\right|B\right)=\frac{P\left(\left.B\right|A\right)P\left(A\right)}{P\left(B\right)}
+![](https://github.com/diazdesandi/proyectoeyad/blob/main/Imagenes/formula.PNG)
+
 Usando el teorema de Bayes, podemos encontrar la probabilidad de que ocurra A, dado que B ha ocurrido. Aquí, B es la evidencia y A es la hipótesis. La suposición hecha aquí es que los predictores / características son independientes. Es decir, la presencia de una característica particular no afecta a la otra.
 
 ### Ggplot2
@@ -30,7 +31,7 @@ Funciones para análisis de clase latente, transformadas de Fourier de corto tie
 ### Caret
 El paquete caret (abreviatura de Entrenamiento de Clasificación y Regresión) contiene funciones para simplificar el proceso de entrenamiento modelo para problemas complejos de regresión y clasificación. El paquete utiliza una cantidad de paquetes R pero intenta no cargarlos todos al inicio del paquete (al eliminar las dependencias formales del paquete, el tiempo de inicio del paquete puede disminuir considerablemente). El campo paquete "sugiere" incluye 30 paquetes. caret carga los paquetes según sea necesario y asume que están instalados. Si falta un paquete de modelado, hay un mensaje para instalarlo [8].
 
-## DESARROLLO
+## Código
 Se declaran las librerías a utilizar
 ```r
 library(Amelia)
@@ -133,39 +134,35 @@ Utilizando la librería ggplot para mostrar la gráfica, vamos a utilizar el sub
 testplt <- plat + geom_jitter()
 Testplt
 ```
-## INTERPRETACIÓN DE RESULTADOS
+## Interpretación de resultados
 En las siguientes graficas se presentan 6 niveles/tipos de destino de basura, donde:  
 
-### TABLA 1
-Valor	Concepto
-1	Se entrega a un camión de basura
-2	Se deposita en un contenedor de basura
-3	Se quema la basura
-4	Se entierra la basura
-5	Se lleva a un basurero publico
-6	Se tira en otro lugar
+### Tabla 1
+![](https://github.com/diazdesandi/proyectoeyad/blob/main/Imagenes/tabla1.PNG)
 
 Mientras que para los municipios se utilizan los siguientes valores:
-### TABLA 2
-Valor	Concepto
-1	Ensenada
-2	Mexicali
-3	Tecate
-4	Tijuana
-5	Playas de Rosarito
+
+### Tabla 2
+![](https://github.com/diazdesandi/proyectoeyad/blob/main/Imagenes/tabla2.PNG)
+
+
+![](https://github.com/diazdesandi/proyectoeyad/blob/main/Imagenes/figura1.png)
 
 Fig.1 Resultado con el set de entrenamiento del algoritmo.
 
 En la gráfica podemos observar que el destino de basura principal es el número 1, el cual abarca la gran mayoría de los puntos, de los 5 municipios el que podemos apreciar que tiene más ingresos por hogar es el número 4 que pertenece a Tijuana y el que menor ingreso por hogar tiene es el de Playas de Rosarito donde se observa una gran concentración de puntos debajo del ingreso mensual de $25,000.
  
+![](https://github.com/diazdesandi/proyectoeyad/blob/main/Imagenes/figura2.PNG)
+
 Fig.2 Resultado con el set de prueba del algoritmo.
+
 En el caso de los entrenamientos de prueba podemos observar que la tendencia es muy similar al caso anterior, donde podemos observar que Tijuana es de los municipios con mayor ingreso por hogar frente a Playas de Rosarito es el que menos ingreso por hogar tiene, pero podemos ver que el número 1 que pertenece a Ensenada tiene el punto más alto de ingresos frente los demás municipios.
 Dejando de lado la interpretación de las gráficas individuales y dando una interpretación en conjunto, estas nos indican que el sistema de recolección de basura es deficiente en colonias o asentamientos de menor ingreso mensual lo que puede llegar a generar condiciones insalubres y de marginación aun en localidades próximas o dentro de ciudades.
 
-## CONCLUSION
+## Conclusión
 El clustering es una herramienta muy útil para agrupar datos similares ya que su uso va desde la separación de verduras por campesinos hasta su aplicación en aprendizaje no supervisado en inteligencia artificial, en este caso lo utilizamos para agrupar datos del CSV de vivienda en el cual agrupamos datos de los municipios vs el ingreso por hogar y con esto tuvimos los datos para hacer el análisis para saber qué municipio tiene más este servicio según su rango de ingreso en sus hogares. En este caso, al aplicar el algoritmo Naive Bayes notamos que es bastante simple de aplicar, pero puede ofrecer predicciones incorrectas ya que al tomar en cuenta las variables de forma independiente no toma en cuenta las situaciones del mundo real donde algunas variables se ven afectadas entre sí.
 
-## BIBLIOGRAFIA
+## Bibliografía
 [1]	Hornik, K. (20-02-20). R FAQ. R FAQ. https://cran.r-project.org/doc/FAQ/R-FAQ.html#What-is-R_003f
 [2]	INEGI. (s. f.). Censo Población y Vivienda 2020. Recuperado 30 de junio de 2020, de https://www.inegi.org.mx/programas/ccpv/2020/default.html
 [3]	ANALISIS DE DATOS - Técnicas de Investigación Educativa G38. (s. f.). Técnicas de Investigación Educativa G38. Recuperado 30 de junio de 2020, de https://sites.google.com/site/tecnicasdeinvestigaciond38/metodos-estadisticos/1-1-analisis-de-datos
@@ -174,6 +171,3 @@ El clustering es una herramienta muy útil para agrupar datos similares ya que s
 [6]	Kabacoff, R. (s. f.). ggplot2 Graphs. Quick - R. Recuperado 30 de junio de 2020, de https://www.statmethods.net/advgraphs/ggplot2.html
 [7]	e1071. (s. f.). Cran. Recuperado 30 de junio de 2020, de https://cran.r-project.org/web/packages/e1071/index.html+
 [8]	CRAN Project. (s. f.). A Short Introduction to the caret Package. CRAN. Recuperado 30 de junio de 2020, de https://cran.r-project.org/web/packages/caret/vignettes/caret.html
-
-
-
